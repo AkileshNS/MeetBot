@@ -5,20 +5,27 @@ import time
 from datetime import datetime
 import sys
 
+#Add RVCE username and pwd. Don't worry, this file always runs locally.
 NAME = ""
-PASSWORD = ''
+PASSWORD = ""
 
-driverpath = r"C:\Users\Akil\Desktop\Me\MeetsBot\ChromeDriver\chromedriver.exe"
+#driverpath = r"C:\Users\Akil\Desktop\Me\MeetsBot\ChromeDriver\chromedriver.exe"
+#Add chrome driver path 
+driverpath=""
 
-links = ['https://meet.google.com/okb-esoq-mqf','https://meet.google.com/fac-ktxt-iaz','https://meet.google.com/aag-mzfr-dxk','https://meet.google.com/pkz-djef-rcj']
-#E-D,E-C,CS/CNP,IOME
+#links = ['https://meet.google.com/okb-esoq-mqf','https://meet.google.com/fac-ktxt-iaz','https://meet.google.com/aag-mzfr-dxk','https://meet.google.com/pkz-djef-rcj']
+#Add Class meet links to the list as followed above
+
+links = []
 
 def meetjoin(URL):
 
     options = webdriver.ChromeOptions()
     options.add_argument("--use-fake-ui-for-media-stream")
     options.add_argument("--disable-notifications")
+    #Uncomment below argument if you want to mute all audio from the meet.
     #options.add_argument("--mute-audio")
+    
     browser  = webdriver.Chrome(executable_path=driverpath,chrome_options=options)
 
     browser.get('https://accounts.google.com/signin')
@@ -37,7 +44,9 @@ def meetjoin(URL):
     browser.find_element_by_xpath('/html/body/div[1]/c-wiz/div/div/div[9]/div[3]/div/div/div[4]/div/div/div[1]/div[1]/div/div[4]/div[2]/div/div').click()
     time.sleep(3)
     browser.find_element_by_xpath('/html/body/div[1]/c-wiz/div/div/div[9]/div[3]/div/div/div[4]/div/div/div[2]/div/div[2]/div/div[1]/div[1]').click()
+    #3000 indicates 50 minutes in seconds, Bot leaves meeting 50 minutes after joining.
     time.sleep(3000)
+    
     browser.find_element_by_xpath('/html/body/div[1]/c-wiz/div[1]/div/div[9]/div[3]/div[10]/div[2]/div/div[7]/span/button').click()
     time.sleep(2)
     sys.exit(0)
@@ -46,8 +55,11 @@ def meetjoin(URL):
 def getURL():
     day = datetime.today().weekday()
     hour = datetime.today().hour
-    #E-D,E-C,CS/CNP,IOME
 
+    #Setup the following based on your time table.
+    #Day=0 -> Monday
+    #Day=4 -> Friday
+    
     if(day==0):
         if(hour==9):
             meetjoin(str(links[0]))
