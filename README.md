@@ -1,2 +1,2 @@
 # MeetBot
-Rudimentary meetbot that works for my college specifically.
+Rudimentary meetbot that joins meetings based on day/time.
