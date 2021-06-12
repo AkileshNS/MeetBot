@@ -40,9 +40,12 @@ def meetjoin(URL):
     #browser.find_element_by_xpath('//*[@id="yDmH0d"]/div[3]/div/div[2]/div[3]/div').click()
     webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
     time.sleep(3)
+    #Mutes Mic
     browser.find_element_by_xpath('/html/body/div[1]/c-wiz/div/div/div[9]/div[3]/div/div/div[4]/div/div/div[1]/div[1]/div/div[4]/div[1]/div/div/div').click()
+    #Turns off Video
     browser.find_element_by_xpath('/html/body/div[1]/c-wiz/div/div/div[9]/div[3]/div/div/div[4]/div/div/div[1]/div[1]/div/div[4]/div[2]/div/div').click()
     time.sleep(3)
+    #Enters Meet
     browser.find_element_by_xpath('/html/body/div[1]/c-wiz/div/div/div[9]/div[3]/div/div/div[4]/div/div/div[2]/div/div[2]/div/div[1]/div[1]').click()
     #3000 indicates 50 minutes in seconds, Bot leaves meeting 50 minutes after joining.
     time.sleep(3000)
@@ -59,7 +62,7 @@ def getURL():
     #Setup the following based on your time table.
     #Day=0 -> Monday
     #Day=4 -> Friday
-    
+    #Ensure your sysclock follows the 24 hour format
     if(day==0):
         if(hour==9):
             meetjoin(str(links[0]))
