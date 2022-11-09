@@ -11,9 +11,8 @@ PASSWORD = ""
 
 driverpath = "ChromeDriver/chromedriver.exe"
 
-links = ['https://meet.google.com/mzp-oerb-qrr','https://meet.google.com/sxm-pexk-ghz','https://meet.google.com/nri-sdry-mhe','https://meet.google.com/xgj-mckt-iun']
-# LTE, MWR, E-F, E-G
-
+links = ['']
+# Enter Links as a list above
 def meetjoin(URL):
 
     options = webdriver.ChromeOptions()
